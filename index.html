@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Startup</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#portfolio">Karya</a>
+</nav>
+
+<section class="hero" id="home">
+
+    <img src="chiken_2_p2-768x768.jpg" width="40%" alt="ayam">
+<h1>Halo, Saya Nama Kamu 🚀</h1>
+<p>Membangun Website Modern & Kreatif</p>
+<a href="#portfolio" class="btn">Lihat Karya</a>
+</section>
+
+<section class="portfolio" id="portfolio">
+<h2>Karya Saya</h2>
+
+<div class="filter-buttons">
+<button onclick="filterProject('all')">Semua</button>
+<button onclick="filterProject('web')">Karya 1</button>
+<button onclick="filterProject('game')">karya 2</button>
+<button onclick="filterProject('design')">Karya 3</button>
+</div>
+
+<div class="project-grid">
+
+<div class="project-card web">
+<img src="download (10).jpg">
+<h3>Karya 1</h3>
+<p>Web pertama yang ku buat.</p>
+<a href="html_basic_01/index1.html" class="demo-btn">Demo Live</a>
+</div>
+
+<div class="project-card game">
+<img src="chiken_2_p2-768x768.jpg">
+<h3>Karya 2</h3>
+<p>Pertama kali mencoba coding game</p>
+<a href="html_basic_02/game.html" class="demo-btn">Demo Live</a>
+</div>
+
+<div class="project-card design">
+<img src="[500] avatar 𓂃꙳⋆.jpg">
+<h3>Karya 3</h3>
+<p>Web kedua yang saya buat</p>
+<a href="html_basic_02/index2.html" class="demo-btn">Demo Live</a>
+</div>
+
+</div>
+</section>
+
+<footer>
+Coding dari chatgpt
+</footer>
+
+<script>
+
+/* 🎬 Scroll Animation */
+const cards = document.querySelectorAll('.project-card');
+
+window.addEventListener('scroll', () => {
+cards.forEach(card => {
+const rect = card.getBoundingClientRect();
+if(rect.top < window.innerHeight - 100){
+card.classList.add('show');
+}
+});
+});
+
+/* 🖼 Filter */
+function filterProject(category){
+const projects = document.querySelectorAll('.project-card');
+
+projects.forEach(project=>{
+project.style.display='none';
+if(category === 'all' || project.classList.contains(category)){
+project.style.display='block';
+}
+});
+}
+
+</script>
+
+</body>
+</html>

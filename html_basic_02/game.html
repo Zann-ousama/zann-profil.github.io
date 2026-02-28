@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Game Tangkap Kotak</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+       background-image:url(background.jpg); 
+    background-repeat: no-repeat; /* Mencegah gambar berulang */
+    background-size: cover; /* Menutupi seluruh layar */
+    background-attachment: fixed; /* Gambar tidak bergerak saat di-scroll */
+    background-position: center; 
+      height: 100vh;
+      margin: 0;
+      padding-top: 20px;
+    }
+
+    h1 {
+      color: rgb(21, 2, 2);
+      text-shadow: 1px 1px 3px rgb(255, 249, 249);
+    }
+
+    #info {
+      font-size: 18px;
+      color: rgb(12, 0, 0);
+      text-shadow: 1px 1px solid white;
+      margin-bottom: 10px;
+    }
+
+    #gameArea {
+      width: 420px;
+      height: 300px;
+      border: 4px solid rgb(45, 17, 17);
+      margin: auto;
+      position: relative;
+      background-color: aliceblue;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    #box {
+      width: 40px;
+      height: 40px;
+      background-image: url(logo.jpg);
+      background-size: cover;
+      position: absolute;
+      display: none;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #ff5252;
+      color: white;
+    }
+
+    button:hover {
+      background-image: url(logo.jpg);
+    }
+  </style>
+</head>
+<body>
+
+<h1>🎮 Game Tangkap Kotak</h1>
+
+<div id="info">
+  Skor: <span id="score">0</span> | 
+  Waktu: <span id="time">20</span> detik
+</div>
+
+<div id="gameArea">
+  <div id="box"></div>
+</div>
+
+<button onclick="startGame()">Mulai Game</button>
+
+<script>
+  let score = 0;
+  let timeLeft = 20;
+  let gameInterval;
+  let timerInterval;
+
+  const box = document.getElementById("box");
+  const gameArea = document.getElementById("gameArea");
+
+  function moveBox() {
+    const maxX = gameArea.clientWidth - box.clientWidth;
+    const maxY = gameArea.clientHeight - box.clientHeight;
+
+    const x = Math.floor(Math.random() * maxX);
+    const y = Math.floor(Math.random() * maxY);
+
+    box.style.left = x + "px";
+    box.style.top = y + "px";
+    box.style.display = "block";
+  }
+
+  box.onclick = function () {
+    score++;
+    document.getElementById("score").innerText = score;
+    moveBox();
+  };
+
+  function startGame() {
+    score = 0;
+    timeLeft = 20;
+    document.getElementById("score").innerText = score;
+    document.getElementById("time").innerText = timeLeft;
+
+    clearInterval(gameInterval);
+    clearInterval(timerInterval);
+
+    moveBox();
+    gameInterval = setInterval(moveBox, 900);
+
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      document.getElementById("time").innerText = timeLeft;
+
+      if (timeLeft <= 0) {
+        clearInterval(gameInterval);
+        clearInterval(timerInterval);
+        box.style.display = "none";
+        alert("⏰ Waktu habis! Skor akhir: " + score);
+      }
+    }, 1000);
+  }
+</script>
+
+</body>
+</html>

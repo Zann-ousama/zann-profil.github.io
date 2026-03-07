@@ -74,7 +74,7 @@ body {
   animation: drift-center 4.5s ease-in-out infinite;
 }
 
-.btn{
+button{
   background: blue;
   color: white;
   padding: 10px 20px;

@@ -74,6 +74,14 @@ body {
   animation: drift-center 4.5s ease-in-out infinite;
 }
 
+.btn{
+  background: blue;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
 .panel {
   width: min(950px, 100%);
   display: grid;

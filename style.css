@@ -85,6 +85,11 @@ button{
   transition:0.3s;
 }
 
+button:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 10px #ffd369;
+}
+
 .panel {
   width: min(950px, 100%);
   display: grid;
